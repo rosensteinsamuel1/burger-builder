@@ -6,13 +6,18 @@ const controls = [
     {label: 'Lettuce', type: 'lettuce'},
     {label: 'Meat', type: 'meat'},
     {label: 'Cheese', type: 'cheese'},
-    {label: 'Meat', type: 'meat'}
+    {label: 'Bacon', type: 'bacon'}
 ]
 
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
         {controls.map(btn => (
-            <BuildButton key={btn.label} label={btn.label} />
+            <BuildButton 
+            key={btn.label} 
+            label={btn.label} 
+            added={() => props.ingredientAdded(btn.type)}
+            removed={() => props.ingredientRemoved(btn.type)} 
+            disabled = {props.disabled[btn.type]}/>
         ))}
     </div>
 );
